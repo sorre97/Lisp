@@ -5,6 +5,9 @@
 ; General case
 (defparameter l (list 1 2 3 4 5))
 
+; Nested case
+(defparameter ln (list 1 (list 2) 3 (list (list 4 5) 6 (list 7 8 (list 9 10)))))
+
 ;Limit cases
   ; empty list
 (defparameter le (list NIL))
@@ -80,12 +83,23 @@
    (T (my_append (my_reverse (rest list)) (list(first list))))))
 
 
-; **** palindromemy_reverse ****
+; **** memy_reverse ****
 ;;;; this function tells if a list is palindrome or not
 ;;;; eg. palindromee (x a n a x) -> T
 
 
 (defun palindrome (list) 
   (equal list (my_reverse list)))
+
+; **** flatten  ****
+;;;; this function flats a list
+;;;; eg. flatten (1 (2 3) 4) -> (1 2 3 4)
+
+(defun flatten (list) 
+  (cond 
+   ((null list) list)    ;null list
+   ((listp (first list)) (my_append (flatten (first list)) (flatten (rest list)))) ;nested list
+   (T (my_append (list (first list)) (flatten (rest list))))))  ;single element
+
 
 
