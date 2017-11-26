@@ -8,10 +8,3 @@
    ((endp (cdr l)) (error "List too short"))
    ((eq (cdr (cdr l)) NIL) l)
    (T (my_last_but_one (cdr l)))))
-    
-(defun my-but-last (list)
-  (cond
-    ((endp list)                (error "Empty list"))
-    ((endp (rest list))         (error "List too short"))
-    ((endp (rest (rest list)))  list)
-    (t                          (my-but-last (rest list)))))
